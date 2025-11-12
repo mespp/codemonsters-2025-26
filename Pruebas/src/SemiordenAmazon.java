@@ -1,6 +1,6 @@
 import java.util.List;
 
-class EntrevistaTrabajoAmazon {
+class SemiordenAmazon {
     public static void main(String[] args) {
         int i = 0;
         List<Integer> nums = List.of(9, 12, 5, 10, 14, 3, 10);
@@ -26,7 +26,7 @@ class EntrevistaTrabajoAmazon {
         numsOrdenados.addAll(numsMenores);
         numsOrdenados.addAll(numsIguales);
         numsOrdenados.addAll(numsMayores);
-        
+
         System.out.println(numsOrdenados);
         }
     }
