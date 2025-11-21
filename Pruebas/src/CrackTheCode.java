@@ -31,7 +31,7 @@ public class CrackTheCode {
 
             for (int i = 0; i < 3; i++) {
                 if (numAdivinar.get(i) == numUsuario.get(i)) {
-                    numsAdivinados = +1;
+                    numsAdivinados = numsAdivinados + 1;
                 }
             }
 
