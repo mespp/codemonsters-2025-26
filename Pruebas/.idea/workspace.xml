@@ -52,7 +52,7 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/codemonsters/Documents/m.esp/java_01/Pruebas",
     "onboarding.tips.debug.path": "/home/codemonsters/Documents/m.esp/java_01/src/Main.java",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
   }
 }]]></component>
   <component name="TaskManager">
@@ -72,11 +72,6 @@
           <properties class="java.lang.UnsupportedOperationException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/CrackTheCode.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

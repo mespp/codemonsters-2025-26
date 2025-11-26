@@ -1,3 +1,5 @@
+// no dice los descolocados esta versión
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
