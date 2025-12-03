@@ -1,4 +1,4 @@
-// está mal
+package Miscelanous;// está mal
 
 import java.util.Scanner;
 

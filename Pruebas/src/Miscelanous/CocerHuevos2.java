@@ -1,3 +1,5 @@
+package Miscelanous;
+
 import java.util.Scanner;
 
 public class CocerHuevos2 {

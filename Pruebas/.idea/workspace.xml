@@ -42,6 +42,7 @@
     "Application.LitrosAGalones.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.NumMayor.executor": "Run",
+    "Application.Programa.executor": "Run",
     "Application.TablaDeMultiplicar.executor": "Run",
     "Application.TrianguloDeFloyd.executor": "Run",
     "Application.Vocales.executor": "Run",
@@ -55,6 +56,14 @@
     "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Baraja" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Miscelanous" />
+    </key>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ea4cde53-9583-45ac-9182-1e2cbada222a" name="Changes" comment="" />
