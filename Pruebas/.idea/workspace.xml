@@ -46,6 +46,7 @@
     "Application.TablaDeMultiplicar.executor": "Run",
     "Application.TrianguloDeFloyd.executor": "Run",
     "Application.Vocales.executor": "Run",
+    "Java Scratch.programa.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -53,7 +54,7 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/codemonsters/Documents/m.esp/java_01/Pruebas",
     "onboarding.tips.debug.path": "/home/codemonsters/Documents/m.esp/java_01/src/Main.java",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RecentsManager">
