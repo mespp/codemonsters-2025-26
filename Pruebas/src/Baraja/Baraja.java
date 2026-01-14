@@ -1,8 +1,10 @@
 package Baraja;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 public class Baraja {
+
     private List<Carta> mazo = new ArrayList();
     private String[] palos = {"oros", "bastos", "copas", "espadas"};
     int[] numeros = {1, 2, 3, 4, 5, 6, 7, 10, 11, 12};
@@ -11,11 +13,12 @@ public class Baraja {
         // TODO: eliminar el mazo y poner las 40 cartas iniciales ordenadas
         eliminarTodasLasCartas();
         for (String p: palos) {
-            for(int n: numeros) {
+            for (int n: numeros) {
                  Carta carta = new Carta(n, p);
                  mazo.add(carta);
             }
         }
+        System.out.println(mazo);
     }
 
     public void retirarCarta() {
@@ -31,12 +34,12 @@ public class Baraja {
     }
 
     public void eliminarTodasLasCartas() {
-        // TODO: borrar las cartas del mazo
         mazo.clear();
     }
 
     public void barajar() {
         // TODO: desordenar las cartas que contiene el mazo
+        Collections.shuffle(mazo);
+        System.out.println(mazo);
     }
 }
-

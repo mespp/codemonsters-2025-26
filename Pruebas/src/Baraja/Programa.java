@@ -5,11 +5,16 @@ import java.util.Scanner;
 public class Programa {
     static Baraja baraja;
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         baraja = new Baraja();
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("HOLA. BIENVENIDO AL GESTOR DE BARAJAS EDICIÓN 2025 v67. SELECCIONA LO QUE DESEAS HACER CON TU MARAVILLOSA Y PRECIADA BARAJA");
+        seleccionar();
+    }
+//whiletrue
+    public void seleccionar() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("HOLA. BIENVENIDO AL GESTOR DE BARAJAS. SELECCIONA LO QUE DESEAS HACER CON TU MARAVILLOSA Y PRECIADA BARAJA");
         System.out.println("Presiona (1) para inicializar");
         System.out.println("Presiona (2) para retirar una carta");
         System.out.println("Presiona (3) para agregar una carta");
@@ -31,7 +36,8 @@ public class Programa {
         } else if (accion == 6) {
             baraja.barajar();
         } else {
-            System.out.println("POR EL SANTO 67!!! ESA OPCIÓN NO ES VÁLIDA!!!");
+            System.out.println("ESA OPCIÓN NO ES VÁLIDA!!!");
+            seleccionar();
         }
     }
 }
