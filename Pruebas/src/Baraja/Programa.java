@@ -22,21 +22,29 @@ public class Programa {
             System.out.println("Presiona (6) para barajar");
             System.out.println("Presiona (0) para salir");
 
-            int accion = sc.nextInt();
-            if (accion == 1) {
+            String accion = sc.nextLine();
+            if (accion.equals("1")) {
                 baraja.inicializar();
-            } else if (accion == 2) {
+            } else if (accion.equals("2")) {
                 baraja.retirarCarta();
-            } else if (accion == 3) {
-                // TODO: Preguntar número y palo e intentar agregar la nueva carta (fallaría si la carta ya existía en el mazo)
-                baraja.agregarCarta();
-            } else if (accion == 4) {
+            } else if (accion.equals("3")) {
+                System.out.println("Dime el palo de la carta que quieres añadir: ");
+                String paloCartaEscogida = sc.nextLine();
+                System.out.println("Dime el número de la carta que quieres añadir: ");
+                int numeroCartaEscogida = sc.nextInt();
+                Carta nuevaCarta = new Carta(numeroCartaEscogida, paloCartaEscogida);
+                if (baraja.agregarCarta(nuevaCarta) == 0) {
+                    System.out.println("Error: no añadida");
+                } else {
+                    System.out.println("Añadida");
+                }
+            } else if (accion.equals("4")) {
                 baraja.listarTodasLasCartas();
-            } else if (accion == 5) {
+            } else if (accion.equals("5")) {
                 baraja.eliminarTodasLasCartas();
-            } else if (accion == 6) {
+            } else if (accion.equals("6")) {
                 baraja.barajar();
-            } else if (accion == 0) {
+            } else if (accion.equals("0")) {
                 break;
             } else {
                 System.out.println("ESA OPCIÓN NO ES VÁLIDA!!!");

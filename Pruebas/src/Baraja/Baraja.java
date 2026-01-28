@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Baraja {
     private List<Carta> mazo = new ArrayList();
     private String[] palos = {"oros", "bastos", "copas", "espadas"};
     private int[] numeros = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    private List<Carta> mazoBackup = mazo;
+    // private List<Carta> mazoBackup = mazo;
 
     public void inicializar() {
         // TODO: eliminar el mazo y poner las 40 cartas iniciales ordenadas
@@ -34,14 +35,16 @@ public class Baraja {
         // System.out.println(mazo.size());
     }
 
-    public void agregarCarta(Carta carta) {
-        // TODO: agregar una carta al mazo y lanzar una excepción si la carta ya existía
-        int tamanoLista = mazoBackup.size();
-        Random aleatorio = new Random();
-        int numAleatorio = aleatorio.nextInt((tamanoLista - 0) + 1) + 0;
-        Carta cartaAleatoria = mazoBackup.get(numAleatorio);
-        mazo.add(cartaAleatoria);
-        System.out.println("Acabas de agregar " + cartaAleatoria);
+    public int agregarCarta(Carta carta) {
+        // TODO: lanzar una excepción si la carta ya existía
+        for (Carta cartaMazo: mazo) {
+            if (cartaMazo.palo.equals(carta.palo) && cartaMazo.numero == carta.numero) {
+                return 0; // no agregada, ya existía una carta igual
+            }
+        }
+
+        mazo.add(carta);
+        return 1;
     }
 
     public void listarTodasLasCartas() {
