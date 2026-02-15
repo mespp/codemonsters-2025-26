@@ -1,4 +1,4 @@
-package baraja;
+package Baraja2;
 import java.util.List;
 import java.util.Scanner;
 import static baraja.Carta.toInt;

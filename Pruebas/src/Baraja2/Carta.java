@@ -1,4 +1,4 @@
-package baraja;
+package Baraja2;
 
 public class Carta {
     public String palo;

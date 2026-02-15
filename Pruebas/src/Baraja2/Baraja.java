@@ -1,4 +1,4 @@
-package baraja;
+package Baraja2;
 
 import java.io.IOException;
 import java.util.ArrayList;
