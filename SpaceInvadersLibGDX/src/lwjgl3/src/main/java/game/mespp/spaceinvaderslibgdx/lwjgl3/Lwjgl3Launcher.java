@@ -1,7 +1,9 @@
 package game.mespp.spaceinvaderslibgdx.lwjgl3;
 
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.graphics.glutils.HdpiMode;
 import game.mespp.spaceinvaderslibgdx.Main;
 
 /** Launches the desktop (LWJGL3) application. */
@@ -31,6 +33,47 @@ public class Lwjgl3Launcher {
         configuration.setWindowedMode(Main.WORLD_WIDTH, Main.WORLD_HEIGHT);
         //// You can change these files; they are in lwjgl3/src/main/resources/ .
         //// They can also be loaded from the root of assets/ .
+
+        configuration.setHdpiMode(HdpiMode.Logical);
+
+        Graphics.DisplayMode display = Lwjgl3ApplicationConfiguration.getDisplayMode();   // Resolución del monitor
+
+        // --- configuración estado inicial de la ventana del juego ---
+
+        // 70% del tamaño del escritorio
+        float targetWidth = display.width * 0.7f;
+        float targetHeight = display.height * 0.7f;
+
+        // Relación de aspecto del juego
+        float gameAspect = (float) Main.WORLD_WIDTH / Main.WORLD_HEIGHT;
+
+        // Ajuste manteniendo aspecto
+        int windowWidth = (int) targetWidth;
+        int windowHeight = (int) (windowWidth / gameAspect);
+
+        if (windowHeight > targetHeight) {
+            windowHeight = (int) targetHeight;
+            windowWidth = (int) (windowHeight * gameAspect);
+        }
+
+        configuration.setWindowedMode(windowWidth, windowHeight);
+
+        // centrar ventana
+        int posX = (display.width - windowWidth) / 2;
+        int posY = (display.height - windowHeight) / 2;
+
+        configuration.setWindowPosition(posX, posY);
+
+        // --- fin configuración estado inicial de la ventana del juego ---
+
+        configuration.setResizable(true);   // permite redimensionar
+
+        configuration.useVsync(true);
+
+        // límita fps cuando la ventana pierde foco
+        configuration.setForegroundFPS(60);
+        configuration.setIdleFPS(30);
+
         configuration.setWindowIcon("libgdx128.png", "libgdx64.png", "libgdx32.png", "libgdx16.png");
 
         //// This could improve compatibility with Windows machines with buggy OpenGL drivers, Macs
