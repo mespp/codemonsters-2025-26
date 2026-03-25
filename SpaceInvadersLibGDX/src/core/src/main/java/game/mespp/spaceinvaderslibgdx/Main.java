@@ -3,6 +3,7 @@ package game.mespp.spaceinvaderslibgdx;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -20,6 +21,7 @@ public class Main extends Game {
     public BitmapFont fontBig, fontRegular;
     public Viewport viewport;
     public ShapeRenderer shapeRenderer;
+    public Texture textureAtlas;
 
     @Override
     public void create() {
@@ -27,9 +29,10 @@ public class Main extends Game {
         viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);   // refresca el viewport al comenzar
 
         batch = new SpriteBatch();
+        textureAtlas = new Texture(Gdx.files.internal("atlas.png"));
 
         shapeRenderer = new ShapeRenderer();
-        FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/space_invaders.ttf"));
+        FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("space_invaders.ttf"));
         FreeTypeFontParameter fontParameter = new FreeTypeFontParameter();
         fontParameter.color = Color.WHITE;
         fontParameter.size = 16;
@@ -48,9 +51,7 @@ public class Main extends Game {
     public void render() {
         viewport.apply();
         batch.setProjectionMatrix(viewport.getCamera().combined);
-        batch.begin();
         super.render();
-        batch.end();
     }
 
     @Override
@@ -60,9 +61,11 @@ public class Main extends Game {
         fontRegular.dispose();
         getScreen().dispose();
         shapeRenderer.dispose();
+        textureAtlas.dispose();
     }
 
     @Override
+
     public void resize(int width, int height) {
         viewport.update(width, height, true);
     }

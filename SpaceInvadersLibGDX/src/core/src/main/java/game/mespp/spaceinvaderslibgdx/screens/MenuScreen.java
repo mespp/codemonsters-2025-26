@@ -12,8 +12,11 @@ public class MenuScreen extends BaseScreen {
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0f, 0f, 0f, 1f);
+
+        main.batch.begin();
         main.fontBig.draw(main.batch, "Space Invaders", 35, 158);
         main.fontRegular.draw(main.batch, "press space to start", 60, 80);
+        main.batch.end();
     }
 
     @Override
