@@ -9,7 +9,8 @@ public abstract class BaseGameObject {
         this.main = main;
     }
 
-    public abstract void update();
+    public abstract void update(float delta);
 
     public abstract void draw();
+
 }

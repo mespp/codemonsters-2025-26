@@ -43,7 +43,6 @@ public class Main extends Game {
         fontRegular = fontGenerator.generateFont(fontParameter);
         fontRegular.setUseIntegerPositions(false);
         fontGenerator.dispose();
-
         this.setScreen(new MenuScreen(this));
     }
 
