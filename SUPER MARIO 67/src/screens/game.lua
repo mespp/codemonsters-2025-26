@@ -12,7 +12,7 @@ local screen = {
     keypressed = function(key)
     end,
     keyreleased = function(key)
-    end
+    end,
 }
 
 return screen

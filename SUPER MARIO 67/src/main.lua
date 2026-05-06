@@ -13,7 +13,8 @@ end
 function love.load()
     love.graphics.setDefaultFilter("nearest") -- definimos el filtro usado durante el escalado
     change_screen("menu")
-    init_autoscale()
+    init_autoscale(1280, 720)
+    hero_sprite = love.graphics.newImage("assets/fishy-body-test.png") 
 end
 
 function love.update(dt)

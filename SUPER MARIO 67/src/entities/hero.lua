@@ -2,10 +2,12 @@ local hero = {
     x = 20,
     y = 10,
     update = function(dt)
-        -- cosas de héroes
+        keypressed = function(d)
+            x = x + 10
+        end,
     end,
     draw = function()
-        -- dibujar el héroe
+        love.graphics.draw(hero_sprite, x, y)
     end
 }
 
