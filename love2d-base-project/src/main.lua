@@ -1,7 +1,10 @@
-require('./misc/autoscale')
+autoscale = require('./misc/autoscale')
 require ("./misc/utils")
 
 enable_local_lua_debugger()
+
+FIXED_WIDTH = 384
+FIXED_HEIGHT = 216
 
 -- *** CALLBACKS LOVE2D *** --
 
@@ -13,8 +16,7 @@ end
 function love.load()
     love.graphics.setDefaultFilter("nearest") -- definimos el filtro usado durante el escalado
     change_screen("menu")
-    init_autoscale(640, 360)
-    hero_sprite = love.graphics.newImage("assets/fishy-body-test.png") 
+    autoscale.init(FIXED_WIDTH, FIXED_HEIGHT)    -- pasamos como argumento la resolución fija a la que diseñaremos el juego
 end
 
 function love.update(dt)
@@ -22,14 +24,9 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.push()
-    love.graphics.setCanvas(mainCanvas)
-    love.graphics.translate(desplazamientoX, desplazamientoY)
-    love.graphics.scale(factorEscala, factorEscala)
-
+    autoscale.before_draw()
     current_screen.draw()
-
-    love.graphics.pop()
+    autoscale.after_draw()
 end
 
 function love.keypressed(key)
@@ -41,5 +38,5 @@ function love.keyreleased(key)
 end
 
 function love.resize(w, h)
-    update_scale_variables(w, h)
+    autoscale.resize(w, h)
 end
