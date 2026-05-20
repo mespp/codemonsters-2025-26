@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../base-projects/love2d-base-project/src"
+		}
+	],
+	"settings": {}
+}
