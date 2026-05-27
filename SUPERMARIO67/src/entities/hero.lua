@@ -10,6 +10,8 @@ function my_module.new_hero(xinit, yinit)
         image = love.graphics.newImage("assets/hero.png"),
         _left_pressed = false,
         _right_pressed = false,
+        _space_pressed = false,
+        _salt = false,
 
         update = function(self, dt)
             if self._left_pressed then
@@ -18,6 +20,15 @@ function my_module.new_hero(xinit, yinit)
             if self._right_pressed then
                 self.x = self.x + 1
             end
+            
+            if self._space_pressed then
+                self.y = self.y - 10
+            end
+
+            while self.y < 121 do
+                self.y = self.y + 20
+            end
+            
         end,
 
         draw = function(self)
@@ -38,6 +49,8 @@ function my_module.new_hero(xinit, yinit)
                 self._left_pressed = true
             elseif key == "right" then
                 self._right_pressed = true
+            elseif key == "space" then
+                self._space_pressed = true
             end
         end,
 
@@ -46,10 +59,12 @@ function my_module.new_hero(xinit, yinit)
                 self._left_pressed = false
             elseif key == "right" then
                 self._right_pressed = false
+            elseif key == "space" then
+                self._space_pressed = false
             end
         end,
     }
-    return hero
+    return hero 
 end
 
 return my_module
