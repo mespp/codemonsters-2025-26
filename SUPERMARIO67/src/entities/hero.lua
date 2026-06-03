@@ -16,8 +16,8 @@ function my_module.new_hero(xinit, yinit)
         states = {
             moving = {
                 init = function(self)
-                    -- semen = love.graphics.newFont("assets/UniversBold.ttf")
-                    -- love.graphics.setFont(semen)
+                    semen = love.graphics.newFont("assets/UniversBold.ttf")
+                    love.graphics.setFont(semen)
                 end,
                 update = function(self, dt)
                     if self._left_pressed then
@@ -28,7 +28,7 @@ function my_module.new_hero(xinit, yinit)
                     end
                 end,
                 draw = function(self, dt)
-                    -- love.graphics.print("PSOE", 100 , 120)
+                    love.graphics.print("PSOE", 100 , 120)
                     love.graphics.draw(self.image, self.x + self.img_shift_x, self.y + self.img_shift_y)
                 end
             },
