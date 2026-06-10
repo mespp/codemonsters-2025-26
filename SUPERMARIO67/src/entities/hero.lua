@@ -16,8 +16,8 @@ function my_module.new_hero(xinit, yinit)
         states = {
             moving = {
                 init = function(self)
-                    semen = love.graphics.newFont("assets/UniversBold.ttf")
-                    love.graphics.setFont(semen)
+                    univers = love.graphics.newFont("assets/UniversBold.ttf")
+                    love.graphics.setFont(univers)
                 end,
                 update = function(self, dt)
                     if self._left_pressed then
@@ -25,6 +25,12 @@ function my_module.new_hero(xinit, yinit)
                     end
                     if self._right_pressed then
                         self.x = self.x + 2
+                    end
+                    if self.x < -self.hitbox.x then
+                        self.x = -self.hitbox.x
+                    end
+                    if self.x > FIXED_WIDTH - self.hitbox.x - self.hitbox.w then
+                        self.x = FIXED_WIDTH - self.hitbox.x - self.hitbox.w
                     end
                 end,
                 draw = function(self, dt)
