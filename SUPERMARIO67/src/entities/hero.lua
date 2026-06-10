@@ -7,7 +7,7 @@ function my_module.new_hero(xinit, yinit)
         img_shift_x = -55,
         img_shift_y = -121,
         hitbox = {x = 4, y = 0, w = 30, h = 52},
-        image = love.graphics.newImage("assets/hero.png"),
+        image = love.graphics.newImage("assets/fishy.png"),
         _left_pressed = false,
         _right_pressed = false,
         _space_pressed = false,
