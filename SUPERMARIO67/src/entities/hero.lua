@@ -12,23 +12,43 @@ function my_module.new_hero(xinit, yinit)
         animationTimer = 0,
         frameRate = 1 / 10,
 
-        image = love.graphics.newImage("assets/fishy/baseFishy.png"),
+        lastLookDirection = "right",
 
-        idleFrames = {
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0001.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0002.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0003.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0004.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0005.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0006.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0007.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0008.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0009.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0010.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0011.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0012.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0013.png"),
-            love.graphics.newImage("assets/fishy/idle/fishy_idle_0014.png"),
+        image = love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0001.png"), -- esto lo hayq sacar eh
+        baseImageRight = love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0001.png"),
+        baseImageLeft = love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0001.png"),
+
+        idleRightFrames = {
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0001.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0002.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0003.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0004.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0005.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0006.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0007.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0008.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0009.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0010.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0011.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0012.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0013.png"),
+            love.graphics.newImage("assets/fishy/idle/idleRight/fishy_idleRight_0014.png"),
+        },
+        idleLeftFrames = {
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0001.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0002.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0003.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0004.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0005.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0006.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0007.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0008.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0009.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0010.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0011.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0012.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0013.png"),
+            love.graphics.newImage("assets/fishy/idle/idleLeft/fishy_idleLeft_0014.png"),
         },
         movingRightFrames = {
             love.graphics.newImage("assets/fishy/moving/movingRight/fishy_movingRight_0001.png"),
@@ -58,12 +78,17 @@ function my_module.new_hero(xinit, yinit)
                     self.animationTimer = self.animationTimer + dt
                     if self.animationTimer >= self.frameRate then
                         self.animationTimer = self.animationTimer - self.frameRate
-                        self.currentFrame = (self.currentFrame % #self.idleFrames) + 1
+                        if self.lastLookDirection == "right" then
+                            self.currentFrame = (self.currentFrame % #self.idleRightFrames) + 1
+                            frameToDrawIdle = self.idleRightFrames[self.currentFrame]
+                        else
+                            self.currentFrame = (self.currentFrame % #self.idleLeftFrames) + 1
+                            frameToDrawIdle = self.idleLeftFrames[self.currentFrame]
+                        end
                     end
                 end,
 
                 draw = function(self, dt)
-                    local frameToDrawIdle = self.idleFrames[self.currentFrame]
                     love.graphics.draw(frameToDrawIdle, self.x + self.img_shift_x, self.y + self.img_shift_y)
                 end
             },
@@ -83,10 +108,12 @@ function my_module.new_hero(xinit, yinit)
                 
                     if self._left_pressed then
                         self.x = self.x - 2
+                        self.lastLookDirection = "left"
                         frameToDrawMoving = self.movingLeftFrames[self.currentFrame]
                     end
                     if self._right_pressed then
                         self.x = self.x + 2
+                        self.lastLookDirection = "right"
                         frameToDrawMoving = self.movingRightFrames[self.currentFrame]
                     end
                     if self.x < -self.hitbox.x then
@@ -96,7 +123,11 @@ function my_module.new_hero(xinit, yinit)
                         self.x = FIXED_WIDTH - self.hitbox.x - self.hitbox.w
                     end
                     if frameToDrawMoving == nil then
-                        frameToDrawMoving = self.image
+                        if self.lastLookDirection == "right" then
+                            frameToDrawMoving = self.baseImageRight
+                        else
+                            frameToDrawMoving = self.baseImageLeft
+                        end
                     end
                 end,
 
